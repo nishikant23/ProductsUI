@@ -1,15 +1,18 @@
 import { useContext } from "react";
-import { ItemContext } from "../context/ItemContext";
+import { ItemContext } from "../contextAPI/context/ItemContext";
 import { ItemCard } from "../components/ItemCard";
 import { Navbar } from "../components/Navbar";
 import { LeftSideBar } from "../components/LeftSideBar";
 import { DeleteBox } from "../components/DeleteBox";
+import { SidebarContext } from "../contextAPI/context/SidebarContex";
+import { DeletContext } from "../contextAPI/context/DeleteContext";
 
 
 export const ItemList = () => {
 
-    const { items, menu, isDelete } = useContext(ItemContext);
-    console.log("Menu  = ", menu)
+    const { items } = useContext(ItemContext);
+    const { sidebar } = useContext(SidebarContext);
+    const { isDelete } = useContext(DeletContext);
      return <div id="roomGrid" className="">
                     <div className="fixed shadow-lg w-full z-50 bg-slate-300">
                         <Navbar/>
@@ -23,7 +26,7 @@ export const ItemList = () => {
                         })}  
                     </div>   
                     <div className={`leftSideBar fixed top-16 left-0 h-full z-40 w-60  justify-start transform transition-transform duration-300  ease-in-out 
-                        ${menu ? "translate-x-0 ": "-translate-x-full"} ` }>
+                        ${sidebar ? "translate-x-0 ": "-translate-x-full"} ` }>
                             <LeftSideBar/>
                     </div> 
                     <div className={`deleteBox fixed inset-0 flex justify-center items-center z-50  transform transition-transform duration-300  ease-in-out 

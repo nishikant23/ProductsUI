@@ -3,13 +3,13 @@ import './App.css'
 import { ItemList } from './pages/ItemList'
 import { ItemDetails } from './pages/ItemDetails'
 import { FormPage } from './pages/FormPage'
-import { ItemProvider } from './context/ItemProvider'
 import { Home } from './pages/Home'
+import { AppProvider } from './contextAPI/provider/AppProvider'
 
 function App() {
 
   return (
-      <ItemProvider>
+      <AppProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home/>}/>
@@ -19,7 +19,7 @@ function App() {
             <Route path='/items/:id/edit' element={<FormPage/>}/>
           </Routes>
         </BrowserRouter>
-      </ItemProvider>
+      </AppProvider>
   )
 }
 

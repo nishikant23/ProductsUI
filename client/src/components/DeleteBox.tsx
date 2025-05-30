@@ -1,9 +1,12 @@
 import { useContext } from "react"
-import { ItemContext, type ItemPayload } from "../context/ItemContext"
+import { type ItemPayload } from "../contextAPI/context/ItemContext"
 import { useItemOperations } from "../utils/itemOperations"
+import { FormContext } from "../contextAPI/context/FormContext"
+import { DeletContext } from "../contextAPI/context/DeleteContext"
 
 export const DeleteBox = () => {
-    const { id, title, description, price, image, category, rating, count, setDelete } = useContext(ItemContext)
+    const { id, title, description, price, image, category, rating, count } = useContext(FormContext)
+    const { toggleDelete } = useContext(DeletContext)
     const newItem : ItemPayload = {
         id, title, description, price, image, category, rating, count
     }
@@ -23,7 +26,7 @@ export const DeleteBox = () => {
                 <div className="flex  justify-between items-center space-x-1.5 mx-1 px-2">
                     <button 
                         onClick={() =>{
-                            setDelete();
+                            toggleDelete();
                         }}
                         className="font-bold w-full block rounded-lg p-3 text-white bg-gray-500 hover:text-slate-50 hover:scale-90 transistion duration-400  ease-in-out hover:bg-black  items-center cursor-pointer">
                             No

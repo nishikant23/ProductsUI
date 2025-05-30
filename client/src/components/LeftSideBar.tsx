@@ -1,17 +1,20 @@
 import { useContext } from "react"
-import { ItemContext } from "../context/ItemContext"
 import { useNavigate } from "react-router-dom";
+import { SidebarContext } from "../contextAPI/context/SidebarContex";
+import { FormContext } from "../contextAPI/context/FormContext";
 
 
 export const LeftSideBar = () => {
 
-    const { sideBarOpen } = useContext(ItemContext);
+    const { toggleSidebar } = useContext(SidebarContext)
+    const { resetForm, setFormType } = useContext(FormContext)
     const navigate = useNavigate()
 
     const handleCreateItem = () => {
-        sideBarOpen();
+        toggleSidebar();
+        resetForm()
+        setFormType("Create New Item")
         navigate('/items/new')
-
     } 
 
     return (

@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import { Navbar } from "../components/Navbar"
 import { FormComponent } from "../components/FormComponent"
+import { useContext } from "react"
+import { FormContext } from "../contextAPI/context/FormContext"
 
 export const FormPage = () => {
 
-
+    const { formSubmissionType } = useContext(FormContext)
     return (
         <div className="bg-slate-100 min-h-screen">
             <div className="fixed shadow-lg w-full z-50">
@@ -17,7 +19,7 @@ export const FormPage = () => {
                     <div className="w-full max-w-4xl">
                         <div className="flex justify-between items-center mb-8">
                         <h1 className="text-3xl font-bold text-gray-900">
-                            Create New Content
+                            {formSubmissionType}
                         </h1>
                         <Link 
                             to="/items" 

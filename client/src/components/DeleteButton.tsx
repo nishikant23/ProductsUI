@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
-import { ItemContext, type ItemPayload } from "../context/ItemContext";
+import { type ItemPayload } from "../contextAPI/context/ItemContext";
+import { FormContext } from "../contextAPI/context/FormContext";
+import { DeletContext } from "../contextAPI/context/DeleteContext";
 
 export const DeleteButton = React.memo(({item} : {item: ItemPayload}) => {
-    const { setDelete,setFormProps } = useContext(ItemContext)
+    const { setFormProps } = useContext(FormContext)
+    const { toggleDelete } = useContext(DeletContext)
 
     return (
     <div className="imageButtons mt-4 w-full">
@@ -19,7 +22,7 @@ export const DeleteButton = React.memo(({item} : {item: ItemPayload}) => {
                     item.count,
                     true,
                 )
-                setDelete();
+                toggleDelete();
             }}
             className="font-bold rounded-lg p-3 text-white bg-red-500 hover:text-slate-50 hover:scale-90 transistion duration-400  ease-in-out hover:bg-black w-full items-center cursor-pointer">
                 Delete Item

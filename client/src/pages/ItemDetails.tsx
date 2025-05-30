@@ -1,14 +1,17 @@
 import { useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { ItemContext } from "../context/ItemContext"
+import { ItemContext } from "../contextAPI/context/ItemContext"
 import { Navbar } from "../components/Navbar";
 import { UpdateButtons } from "../components/UpdateButtons";
 import { DeleteButton } from "../components/DeleteButton";
+import { DeleteBox } from "../components/DeleteBox";
+import { DeletContext } from "../contextAPI/context/DeleteContext";
 
 export const ItemDetails = () => {
 
     const { id } = useParams<string>();
     const { items } = useContext(ItemContext);
+    const { isDelete } = useContext(DeletContext);
     const navigate = useNavigate();
 
     const offers  : string[] = ["5% Unlimited Cashback on Flipkart Axis Bank Credit Card",
@@ -100,6 +103,10 @@ export const ItemDetails = () => {
                     </div>
 
                 </div>
+            </div>
+            <div className={`deleteBox fixed inset-0 flex justify-center items-center z-50  transform transition-transform duration-300  ease-in-out 
+                ${isDelete ? "visible ": "collapse"} ` }>
+                    <DeleteBox />
             </div>
         </div>
     )

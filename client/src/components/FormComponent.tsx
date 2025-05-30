@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
-import { ItemContext, type ItemPayload } from "../context/ItemContext"
+import { ItemContext, type ItemPayload } from "../contextAPI/context/ItemContext"
 import { useNavigate } from "react-router-dom";
+import { FormContext } from "../contextAPI/context/FormContext";
 
 
 
@@ -21,7 +22,9 @@ export const FormComponent = () => {
     
     const { id : contextId, title: contextTitle, description: contextDescription, price: contextPrice, 
             image: contextImage, category: contextCategory, rating: contextRating, 
-            count: contextCount, isFormEditing, updateItem, addItem } = useContext(ItemContext);
+            count: contextCount, isFormEditing, resetForm, formSubmissionType} = useContext(FormContext);
+
+    const { items, updateItem, addItem } = useContext(ItemContext)
 
     useEffect(() => {
         
@@ -46,8 +49,31 @@ export const FormComponent = () => {
         const numericCount = parseFloat(count);
         if (!isNaN(numericPrice) && !isNaN(numericRating) && !isNaN(numericCount)) {
             setIsSubmitting(true);
-            const newItem : ItemPayload = {
-                id: id,
+
+            if(isFormEditing && contextTitle){
+                const newItem : ItemPayload = {
+                    id: id,
+                    title: title,
+                    description: description,
+                    price: numericPrice,
+                    image : image,
+                    category: category,
+                    rating : numericRating,
+                    count : numericCount,
+                }
+                updateItem(newItem);
+
+                // setTitle("");
+                // setDescription("");
+                // setPrice("");
+                // setImage("");
+                // setCategory("");
+                // setRating("");
+                // setCount("");
+            }
+            else {
+                addItem({
+                id: items.length+1,
                 title: title,
                 description: description,
                 price: numericPrice,
@@ -55,10 +81,17 @@ export const FormComponent = () => {
                 category: category,
                 rating : numericRating,
                 count : numericCount,
+                });
+
+                // setTitle("");
+                // setDescription("");
+                // setPrice("");
+                // setImage("");
+                // setCategory("");
+                // setRating("");
+                // setCount("");
             }
-            console.log("New Price : ", newItem.price) //Showing updated price : 232
-            if(isFormEditing && contextTitle) updateItem(newItem);
-            else addItem(newItem);
+            resetForm();
             navigate('/items'); //After navigation not visible in new Items List
         } 
     }
@@ -67,7 +100,7 @@ export const FormComponent = () => {
         <div className="ItemForm ">
             <div className="rounded-xl mx-auto border border-slate-200 shadow-2xl max-w-3xl  p-4 bg-white ">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                    Upload New Item
+                    {formSubmissionType}
                 </p>
                 
                 {/* Input Fields */}
@@ -85,7 +118,7 @@ export const FormComponent = () => {
                     <div className="mb-4">
                         <label htmlFor="description" className="block text-md font-medium text-gray-600 mb-1">Description *</label>
                         <textarea 
-                            rows={4} 
+                            rows={3} 
                             id="description" 
                             value={description} 
                             onChange={(e) => setDescription(e.target.value)} 
