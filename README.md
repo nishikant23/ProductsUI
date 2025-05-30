@@ -7,6 +7,9 @@ A simple and elegant React-based product management UI where users can add, edit
 Access the live working version here:
 👉 [https://products-ui.vercel.app](https://products-ui.vercel.app)
 
+Watrch the demo working here:
+👉 [https://drive.google.com/drive/u/6/folders/1Q7zs1fK00cq7B8GG0dbpF7_tr_mR3I7D)
+
 ## 📁 Project Structure
 
 ```
