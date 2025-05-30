@@ -3,11 +3,12 @@ import { ItemContext } from "../context/ItemContext";
 import { ItemCard } from "../components/ItemCard";
 import { Navbar } from "../components/Navbar";
 import { LeftSideBar } from "../components/LeftSideBar";
+import { DeleteBox } from "../components/DeleteBox";
 
 
 export const ItemList = () => {
 
-    const { items, menu } = useContext(ItemContext);
+    const { items, menu, isDelete } = useContext(ItemContext);
     console.log("Menu  = ", menu)
      return <div id="roomGrid" className="">
                     <div className="fixed shadow-lg w-full z-50 bg-slate-300">
@@ -25,5 +26,10 @@ export const ItemList = () => {
                         ${menu ? "translate-x-0 ": "-translate-x-full"} ` }>
                             <LeftSideBar/>
                     </div> 
+                    <div className={`deleteBox fixed inset-0 flex justify-center items-center z-50  transform transition-transform duration-300  ease-in-out 
+                        ${isDelete ? "visible ": "collapse"} ` }>
+                            <DeleteBox />
+                    </div> 
+
         </div>
 }

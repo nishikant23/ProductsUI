@@ -6,7 +6,7 @@ export const FormPage = () => {
 
 
     return (
-        <div className="bg-slate-200 min-h-screen">
+        <div className="bg-slate-100 min-h-screen">
             <div className="fixed shadow-lg w-full z-50">
                 <Navbar/>
             </div>

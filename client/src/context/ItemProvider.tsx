@@ -26,6 +26,7 @@ export const ItemProvider : FC<ItemProviderType> = ({ children }) => {
     const [isFormEditing, setIsFormEditing] = useState<boolean>(false);
     const [ itemsFetched, setItemsFetched ] = useState<boolean>(false);
     const [ menu, setMenu ] = useState<boolean>(false);
+    const [ isDelete, setIsDelete ] = useState<boolean>(false);
 
 
     //Loading Items
@@ -58,13 +59,10 @@ export const ItemProvider : FC<ItemProviderType> = ({ children }) => {
     }
 
     const updateItem = (updatedItem : ItemPayload) => {
-        console.log("CONTEXT A")
-        console.log("From Context API PRICE : ", updatedItem.price)
         setItems((existingItems) => (
             
             existingItems.map((currItem) => currItem.id === updatedItem.id ? updatedItem : currItem)
         ))
-        console.log("CONTEXT ")
     }
 
     const deleteItem = (id: number) => {
@@ -102,9 +100,13 @@ export const ItemProvider : FC<ItemProviderType> = ({ children }) => {
         setMenu(p => !p)
     }
 
+    const setDelete = () => {
+        setIsDelete(p => !p);
+    }
+
     return (
         <ItemContext.Provider 
-            value ={{items, loading, viewItem, error, addItem, updateItem, deleteItem, viewItemDetails, id, title, description, price, image,  category, rating, count, isFormEditing, setFormProps, menu, sideBarOpen}}>
+            value ={{items, loading, viewItem, error, addItem, updateItem, deleteItem, viewItemDetails, id, title, description, price, image,  category, rating, count, isFormEditing, setFormProps, menu, sideBarOpen, isDelete, setDelete}}>
             {children}
         </ItemContext.Provider>
     )

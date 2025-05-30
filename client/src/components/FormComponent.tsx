@@ -65,7 +65,7 @@ export const FormComponent = () => {
 
     return (
         <div className="ItemForm ">
-            <div className="rounded-xl mx-auto border border-gray-300 shadow-lg max-w-3xl  p-4 bg-white ">
+            <div className="rounded-xl mx-auto border border-slate-200 shadow-2xl max-w-3xl  p-4 bg-white ">
                 <p className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                     Upload New Item
                 </p>
@@ -164,7 +164,7 @@ export const FormComponent = () => {
                         <button 
                             type="submit"
                             disabled={isSubmitting}
-                            className="px-6 py-3 bg-gradient-to-r from-blue-700  to-purple-700 text-white 
+                            className="px-6 py-3 bg-black text-white 
                             font-semibold rounded-lg hover:shadow-lg transform transition-all duration-200 
                             hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                             {isSubmitting ? 'uploading...' : 'Upload Item'}

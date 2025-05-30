@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { ItemContext } from "../context/ItemContext"
 import { Navbar } from "../components/Navbar";
 import { UpdateButtons } from "../components/UpdateButtons";
+import { DeleteButton } from "../components/DeleteButton";
 
 export const ItemDetails = () => {
 
@@ -93,7 +94,11 @@ export const ItemDetails = () => {
                     </div>
 
                     {/* Edit and Delete Buttons */}
-                    <UpdateButtons item={item}/>
+                    <div className="flex justify-between space-x-1.5">
+                        <UpdateButtons item={item}/>
+                        <DeleteButton item={item}/>
+                    </div>
+
                 </div>
             </div>
         </div>

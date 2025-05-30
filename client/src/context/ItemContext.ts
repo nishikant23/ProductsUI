@@ -49,7 +49,8 @@ export interface ItemContextType {
 
     menu :boolean,
     sideBarOpen : () => void,
-    
+    isDelete : boolean,
+    setDelete : () => void
 }
 export const ItemContext = createContext<ItemContextType>({
     items : [],
@@ -71,5 +72,7 @@ export const ItemContext = createContext<ItemContextType>({
     viewItemDetails : () => {},
     setFormProps : () => {},
     menu : false,
-    sideBarOpen : () => {}
+    sideBarOpen : () => {},
+    isDelete : false,
+    setDelete : () => {},
  }); 
