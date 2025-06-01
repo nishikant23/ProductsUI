@@ -4,7 +4,7 @@ import { FormComponent } from "../components/FormComponent"
 import { useContext } from "react"
 import { FormContext } from "../contextAPI/context/FormContext"
 
-export const FormPage = () => {
+ const FormPage = () => {
 
     const { formSubmissionType } = useContext(FormContext)
     return (
@@ -57,3 +57,4 @@ export const FormPage = () => {
         </div>
     )
 }
+export default FormPage;

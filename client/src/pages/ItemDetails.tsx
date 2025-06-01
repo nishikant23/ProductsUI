@@ -7,7 +7,7 @@ import { DeleteButton } from "../components/DeleteButton";
 import { DeleteBox } from "../components/DeleteBox";
 import { DeletContext } from "../contextAPI/context/DeleteContext";
 
-export const ItemDetails = () => {
+ const ItemDetails = () => {
 
     const { id } = useParams<string>();
     const { items } = useContext(ItemContext);
@@ -111,3 +111,4 @@ export const ItemDetails = () => {
         </div>
     )
 }
+export default ItemDetails;
