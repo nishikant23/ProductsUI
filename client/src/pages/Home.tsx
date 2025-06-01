@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Home = () => {
+ const Home = () => {
   const images: string[] = [
     "https://i.pinimg.com/736x/d9/2c/5e/d92c5e024bc44e9ceedbccf223455245.jpg",
     "https://c4.wallpaperflare.com/wallpaper/409/952/920/dragon-ball-z-son-goku-portrait-display-wallpaper-preview.jpg",
@@ -70,3 +70,4 @@ export const Home = () => {
     </div>
   );
 };
+export default Home;

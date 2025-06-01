@@ -8,7 +8,7 @@ import { SidebarContext } from "../contextAPI/context/SidebarContex";
 import { DeletContext } from "../contextAPI/context/DeleteContext";
 
 
-export const ItemList = () => {
+ const ItemList = () => {
 
     const { items } = useContext(ItemContext);
     const { sidebar } = useContext(SidebarContext);
@@ -36,3 +36,4 @@ export const ItemList = () => {
 
         </div>
 }
+export default ItemList;
